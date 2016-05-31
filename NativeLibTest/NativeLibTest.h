@@ -5,18 +5,16 @@
 // NATIVELIBTEST_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
 #ifdef NATIVELIBTEST_EXPORTS
-#define NATIVELIBTEST_API __declspec(dllexport)
+#define NATIVELIBTEST_API extern "C" __declspec(dllexport)
 #else
-#define NATIVELIBTEST_API __declspec(dllimport)
+#define NATIVELIBTEST_API extern "C" __declspec(dllimport)
 #endif
 
 // This class is exported from the NativeLibTest.dll
-class NATIVELIBTEST_API CNativeLibTest {
+class CNativeLibTest {
 public:
 	CNativeLibTest(void);
 	// TODO: add your methods here.
 };
-
-extern NATIVELIBTEST_API int nNativeLibTest;
 
 NATIVELIBTEST_API int fnNativeLibTest(void);
