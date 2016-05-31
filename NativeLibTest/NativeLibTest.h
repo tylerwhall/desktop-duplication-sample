@@ -9,12 +9,3 @@
 #else
 #define NATIVELIBTEST_API extern "C" __declspec(dllimport)
 #endif
-
-// This class is exported from the NativeLibTest.dll
-class CNativeLibTest {
-public:
-	CNativeLibTest(void);
-	// TODO: add your methods here.
-};
-
-NATIVELIBTEST_API int fnNativeLibTest(void);
