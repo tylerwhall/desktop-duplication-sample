@@ -1,0 +1,31 @@
+DXGI/DX11 Desktop Duplication test library for Unity C# integration
+
+API:
+ - grabber_create
+ - grabber_get_dest_tex
+    Returns a ID3D11ShaderResourceView that contains the screen contents.
+ - grabber_get_next_frame
+    Updates the shader resource view texture with the current screen contents
+ - grabber_destroy
+ - grabber_get_width
+ - grabber_get_height
+
+This should be taken as an example only. It would probably be best to create a
+new project using this code as a reference.
+
+Hacks/Issues:
+ - grabber_create takes a pointer to an existing texture which is used to get
+   the ID3D11Device by calling GetDevice. There should be a native Unity API
+   way to do this. Notably, the texture won't display if it was created using a
+   different ID3D11Device than Unity is using.
+ - Doesn't handle the mouse cursor or take advantage of dirty/copy rects.
+   CopyResource is used to copy the whole frame. Performance seems fine despite
+   this though, since it should all take place on the GPU.
+ - Errors aren't returned through the public API. I didn't know the C#
+   marshalling interface well enough to implement output parameters.
+ - grabber_get_next_frame takes a texture pointer which is not used. Leftover
+   from old experiment.
+ - grabber_get_next_frame should be hooked into the rendering thread instead of
+   being called from C#.
+ - Everything assumes DX11 is the rendering backend for Unity. This should be
+   queried at runtime.
