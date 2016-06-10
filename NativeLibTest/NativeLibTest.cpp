@@ -202,6 +202,7 @@ NATIVELIBTEST_API int grabber_get_next_frame(struct DX11ScreenGrabber *grabber, 
 	grabber->dest_tex->GetDesc(&d_desc);
 
 	grabber->context->CopyResource(grabber->dest_tex, source);
+	//grabber->context->Flush();
 	//grabber->context->CopyResource(dest, source);
 
 out:

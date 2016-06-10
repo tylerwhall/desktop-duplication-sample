@@ -1,5 +1,8 @@
 DXGI/DX11 Desktop Duplication test library for Unity C# integration
 
+Demo:
+https://www.youtube.com/watch?v=FftSRGpxCAw
+
 API:
  - grabber_create
  - grabber_get_dest_tex
